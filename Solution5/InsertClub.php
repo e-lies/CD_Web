@@ -15,7 +15,7 @@
         print_r($_POST);
         print_r($_FILES);
         //Avant de faire l'insert, on va devoir créer le fichier logo dans notre serveur, on lui donnera le nom du club
-        $path = "../Images/".$_POST['nom'].".jpg";
+        $path = "../Images/".explode(' ',$_POST['nom'])[0].".jpg";
         move_uploaded_file($_FILES['logo']['tmp_name'],$path);
         $rep = $conx->query(
             "insert into clubs (id_pays, nom, logo) values (".$_POST['pays'].",'".$_POST['nom']."','".$path."')"

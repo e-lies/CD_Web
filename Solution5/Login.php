@@ -3,6 +3,7 @@
     session_start();
 
     //Requete qui va vérifier si l'utilisateur existe, et récupérer son nom et son pays si c'est le cas
+    echo "select id, nom, id_club from users where nom='".$_POST['user']."' AND password='".$_POST['mdp']."'";
     $user = $conx->query("select id, nom, id_club from users where nom='".$_POST['user']."' AND password='".$_POST['mdp']."'")->fetch();
 
     if(isset($user['id']) && isset($user['nom'])){ // si l'utilisateur existe, ces variables existeront et la fonction donnera true

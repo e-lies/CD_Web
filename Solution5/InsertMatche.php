@@ -13,12 +13,12 @@
     try {
         echo "<pre>"; // sert juste à afficher les tableaux de façon organisée
         print_r($_GET);
-        $rep = $conx->query(
+        $rep = $conx->prepare(
             "insert into matches (id_guest, id_visitor, date) values (".$_GET['guest'].",".$_GET['visitor'].",'".$_GET['date']."')"
-        );
+        )->execute();
         print_r($rep);
     }
-    catch(Exception $e){
+    catch(PDOException $e){
         $rslt['msg'] = "Une erreur est survenue ! ".$e;
     }
 ?>

@@ -12,7 +12,8 @@
 <?php
 	require_once('../Connexion.inc.php'); //permet d'intégrer l'objet $conx à ce fichier
 
-	$clubs = $conx->query("select id, nom from clubs")->fetchall();
+	$clubs = $conx->query("select id, nom from clubs")->fetchall(PDO::FETCH_ASSOC);
+	//echo "<pre>"; print_r($clubs);
 	echo "<label> Equipe1 ";
 	echo "<select class='input' name='guest'>";
 	foreach ($clubs as $key => $value) {
